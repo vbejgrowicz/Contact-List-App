@@ -54,6 +54,7 @@ module.exports = {
       title: 'Contact List',
       filename: 'index.html',
       template: './index.html',
+      favicon: './assets/icons/logo.png',
     }),
   ],
   resolve: {
