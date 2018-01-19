@@ -1,9 +1,10 @@
-const initialState = {
-  contacts: [],
-};
+import { combineReducers } from 'redux';
+import contacts from './contacts';
+import visibilityFilter from './visibilityFilter';
 
-function contactApp(state = initialState, action) {
-  return state;
-}
+const contactApp = combineReducers({
+  contacts,
+  visibilityFilter,
+});
 
 export default contactApp;
