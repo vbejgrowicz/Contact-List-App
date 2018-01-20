@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import contacts from './contacts';
-import visibilityFilter from './visibilityFilter';
+import settings from './settings';
 
 const contactApp = combineReducers({
   contacts,
-  visibilityFilter,
+  settings,
 });
 
 export default contactApp;
