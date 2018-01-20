@@ -19,6 +19,7 @@ function createContacts(number) {
       zipcode: faker.address.zipCode(),
     };
     const contact = {
+      id: i,
       name,
       phone,
       email,
