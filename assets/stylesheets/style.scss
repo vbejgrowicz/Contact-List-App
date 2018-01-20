@@ -1,3 +1,33 @@
 body {
   background-color: #8FD1F6;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  background-color: #F9F9F9;
+  margin: 5px;
+  padding: 5px;
+  width: 90%;
+  display: flex;
+
+  div {
+    width: 33.33%;
+
+    &.name {
+      font-weight: bold;
+    }
+    &.email {
+      text-align: right;
+    }
+    &.phone {
+      text-align: center;
+    }
+  }
 }
