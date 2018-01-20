@@ -1,4 +1,5 @@
-(function(){
+/* eslint-disable */
+(function() {
   var reduxUtils = {};
 
   // Array Functions
@@ -9,9 +10,9 @@
         return item;
       });
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };;
 
   reduxUtils.drop = function(input, dropNum) {
     if (input instanceof Array) {
@@ -21,9 +22,9 @@
       }
       newArray = input.slice(dropNum);
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };;
 
   reduxUtils.take = function(input, takeNum) {
     if (input instanceof Array) {
@@ -33,25 +34,25 @@
       }
       newArray = input.slice(0, takeNum);
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.min = function(input) {
     if (input instanceof Array && input.length > 0) {
       var min = Math.min.apply(this, input);
       return min;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.max = function(input) {
     if (input instanceof Array && input.length > 0) {
       var max = Math.max.apply(this, input);
       return max;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.uniq = function(input) {
     if (input instanceof Array) {
@@ -62,9 +63,9 @@
         }
       }
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.chunk = function(input, chunkSize) {
     if (input instanceof Array) {
@@ -76,9 +77,9 @@
         newArray.push(input.slice(i, i + chunkSize));
       }
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.flatten = function(input) {
     if (input instanceof Array) {
@@ -89,9 +90,9 @@
         return acc.concat(value);
       }.bind(this), []);
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.remove = function(input, func) {
     if (input instanceof Array && func instanceof Function) {
@@ -102,9 +103,9 @@
         }
       })
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.map = function(input, func) {
     if (input instanceof Array && func instanceof Function) {
@@ -113,9 +114,9 @@
         newArray.push(func(value));
       });
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.reduce = function(input, func, accumulator) {
     if (input instanceof Array && func instanceof Function) {
@@ -123,9 +124,20 @@
         accumulator = func(accumulator, value);
       });
       return accumulator;
-    }
+    };
     return undefined;
-  }
+  };
+
+  reduxUtils.sort = function(input, func) {
+    if (input instanceof Array && func instanceof Function) {
+      var newArray = input.slice(0, input.length);
+      return newArray.sort(func);
+    } else if (input instanceof Array) {
+      var newArray = input.slice(0, input.length);
+      return newArray.sort();
+    };
+    return undefined;
+  };
 
   // Object Functions
   reduxUtils.keys = function(input) {
@@ -135,9 +147,9 @@
         newArray.push(key);
       });
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.values = function(input) {
     if (input instanceof Object && !(input instanceof Array)) {
@@ -146,9 +158,9 @@
         newArray.push(value);
       });
       return newArray;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.findKey = function(input, func) {
     if ((input instanceof Object && !(input instanceof Array)) && func instanceof Function) {
@@ -161,9 +173,9 @@
         }
       }
       return foundKey;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.merge = function(inputOne, inputTwo) {
     if ((inputOne instanceof Object && !(inputOne instanceof Array)) && (inputTwo instanceof Object && !(inputTwo instanceof Array))) {
@@ -175,9 +187,9 @@
     } else if ((inputOne instanceof Object && !(inputOne instanceof Array)) && inputTwo === undefined) {
       var mergedObject = inputOne;
       return mergedObject;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.mapKeys = function(input, func) {
     if ((input instanceof Object && !(input instanceof Array)) && func instanceof Function) {
@@ -187,9 +199,9 @@
         newObject[newKey] = value;
       });
       return newObject;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.mapValues = function(input, func) {
     if ((input instanceof Object && !(input instanceof Array)) && func instanceof Function) {
@@ -199,9 +211,9 @@
         newObject[key] = newValue;
       });
       return newObject;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.pick = function(input, list) {
     if (input instanceof Object && !(input instanceof Array)) {
@@ -216,9 +228,9 @@
         }
       });
       return newObject;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.omit = function(input, list) {
     if (input instanceof Object && !(input instanceof Array)) {
@@ -233,9 +245,9 @@
         }
       });
       return newObject;
-    }
+    };
     return undefined;
-  }
+  };
 
   // Object/Array Functions
   reduxUtils.each = function(input, func) {
@@ -249,9 +261,9 @@
         func(key, input[key], input);
       }
       return input;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.every = function(input, func) {
     if (input instanceof Array && func instanceof Function) {
@@ -272,9 +284,9 @@
         }
       }
       return result;
-    }
+    };
     return undefined;
-  }
+  };
 
   reduxUtils.filter = function(input, func) {
     if (input instanceof Array && func instanceof Function) {
@@ -293,9 +305,9 @@
         }
       });
       return newObject;
-    }
+    };
     return undefined;
-  }
+  };
 
   module.exports = reduxUtils;
 
