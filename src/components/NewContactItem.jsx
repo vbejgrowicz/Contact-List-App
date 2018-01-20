@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import reduxUtils from '../../libs/Redux-Utility-Functions';
+import { addContact } from '../actions/contactActions';
+
 class NewContactItem extends React.Component {
   constructor(props) {
     super(props);
@@ -52,6 +54,7 @@ class NewContactItem extends React.Component {
         zip,
       },
     };
+    this.props.submitContact(newContact);
   }
 
   renderInput(item) {
@@ -74,8 +77,15 @@ class NewContactItem extends React.Component {
   }
 }
 
+NewContactItem.propTypes = {
+  submitContact: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = dispatch => (
   {
+    submitContact: (post, category, user, postCount) => {
+      dispatch(addContact(post, category, user, postCount));
+    },
   }
 );
 export default connect(null, mapDispatchToProps)(NewContactItem);
