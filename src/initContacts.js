@@ -31,7 +31,9 @@ function createContacts(number) {
 }
 
 const initContacts = {
-  contacts: createContacts(50),
+  contacts: {
+    list: createContacts(50),
+  },
 };
 
 export default initContacts;

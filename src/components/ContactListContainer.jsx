@@ -36,7 +36,7 @@ const getSortedContacts = (contacts, settings) => {
 
 const mapStateToProps = state => (
   {
-    contacts: getSortedContacts(state.contacts, state.settings),
+    contacts: getSortedContacts(state.contacts.list, state.settings),
   }
 );
 
