@@ -7,7 +7,7 @@ import ContactItem from './ContactItem';
 function ContactList({ contacts }) {
   function renderContact(contact) {
     return (
-      <ContactItem key={contact.firstName} contact={contact} />
+      <ContactItem key={contact.name.first + contact.name.last} contact={contact} />
     );
   }
   return (

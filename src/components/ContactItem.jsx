@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-function ContactItem({ contact }) {
+function ContactItem({ contact, sortBy }) {
   const { name, phone, email } = contact;
   return (
     <li>
       <div className="name">
+        {sortBy === 'LAST' ? (
+          `${name.last}, ${name.first}`
+        ) : (
+          `${name.first} ${name.last}`
+        )}
       </div>
       <div className="phone">
         {phone}
@@ -19,6 +25,11 @@ function ContactItem({ contact }) {
 
 ContactItem.propTypes = {
   contact: PropTypes.object.isRequired,
+  sortBy: PropTypes.string.isRequired,
 };
 
-export default ContactItem;
+function mapStateToProps({ settings }) {
+  return { sortBy: settings.sortBy };
+}
+
+export default connect(mapStateToProps, null)(ContactItem);
