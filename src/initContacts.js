@@ -5,11 +5,13 @@ faker.seed(123);
 function createContacts(number) {
   const contactList = [];
   for (let i = 0; i < number; i += 1) {
-    const firstName = faker.name.firstName();
-    const lastName = faker.name.lastName();
-    const username = `${firstName.charAt(0)}${lastName}`;
-    const email = `${username.toLowerCase()}@${faker.internet.domainName()}`;
+    const name = {
+      first: faker.name.firstName(),
+      last: faker.name.lastName(),
+    };
     const phone = faker.phone.phoneNumberFormat();
+    const username = `${name.first.charAt(0)}${name.last}`;
+    const email = `${username.toLowerCase()}@${faker.internet.domainName()}`;
     const address = {
       street: faker.address.streetAddress(),
       city: faker.address.city(),
@@ -17,10 +19,9 @@ function createContacts(number) {
       zipcode: faker.address.zipCode(),
     };
     const contact = {
-      firstName,
-      lastName,
-      email,
+      name,
       phone,
+      email,
       address,
     };
     contactList.push(contact);
@@ -29,7 +30,7 @@ function createContacts(number) {
 }
 
 const initContacts = {
-  contacts: createContacts(20),
+  contacts: createContacts(50),
 };
 
 export default initContacts;

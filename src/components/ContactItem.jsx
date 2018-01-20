@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ContactItem({ contact }) {
+  const { name, phone, email } = contact;
   return (
-    <div>
-      <ul>
-        {contact.firstName}
-      </ul>
-    </div>
+    <li>
+      <div className="name">
+      </div>
+      <div className="phone">
+        {phone}
+      </div>
+      <div className="email">
+        {email}
+      </div>
+    </li>
   );
 }
 
