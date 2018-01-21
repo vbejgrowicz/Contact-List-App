@@ -8,8 +8,7 @@ function addContactToList(list, contact) {
   const listIds = reduxUtils.map(list, each => each.id);
   const maxId = reduxUtils.max(listIds);
   const contactWithId = reduxUtils.merge({ id: maxId + 1 }, contact);
-
-  return reduxUtils.take(list, list.length).concat(contactWithId);
+  return list.concat(contactWithId);
 }
 
 const contacts = (state = initalState, action) => {
