@@ -34,9 +34,26 @@ const getSortedContacts = (contacts, settings) => {
   }
 };
 
+const getFilteredContacts = (contacts, settings) => {
+  if (settings.visible !== 'SHOW ALL') {
+    const filterBy = (value) => {
+      const lowerFirst = value.name.first.toLowerCase();
+      const lowerLast = value.name.last.toLowerCase();
+      const lowerFilter = settings.visible.toLowerCase();
+      const firstIncludes = lowerFirst.indexOf(lowerFilter) >= 0;
+      const lastIncludes = lowerLast.indexOf(lowerFilter) >= 0;
+      return firstIncludes || lastIncludes;
+    };
+    const filteredList = reduxUtils.filter(contacts, filterBy);
+    return getSortedContacts(filteredList, settings);
+  }
+  return getSortedContacts(contacts, settings);
+};
+
+
 const mapStateToProps = state => (
   {
-    contacts: getSortedContacts(state.contacts.list, state.settings),
+    contacts: getFilteredContacts(state.contacts.list, state.settings),
   }
 );
 
