@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import reduxUtils from '../../libs/Redux-Utility-Functions';
 import { addContact } from '../actions/contactActions';
+import createPlaceHolder from '../utils/helpers';
 
 class NewContactItem extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class NewContactItem extends React.Component {
       street: '',
       city: '',
       state: '',
-      zip: '',
+      zipcode: '',
     };
     this.submitContact = this.submitContact.bind(this);
     this.onInput = this.onInput.bind(this);
@@ -38,7 +39,7 @@ class NewContactItem extends React.Component {
       street,
       city,
       state,
-      zip,
+      zipcode,
     } = this.state;
     const newContact = {
       name: {
@@ -51,25 +52,31 @@ class NewContactItem extends React.Component {
         street,
         city,
         state,
-        zip,
+        zipcode,
       },
     };
     this.props.submitContact(newContact);
   }
 
   renderInput(item) {
+    const placeholder = createPlaceHolder(item);
     return (
-      <label key={item} htmlFor={item}>
-        {item.charAt(0).toUpperCase() + item.slice(1, item.length).toLowerCase()}
-        <input type="text" name={item} onChange={this.onInput} />
-      </label>
+      <input
+        key={item}
+        className={item}
+        type="text"
+        name={item}
+        onChange={this.onInput}
+        placeholder={placeholder}
+      />
     );
   }
 
   render() {
     const inputs = reduxUtils.keys(this.state);
     return (
-      <div>
+      <div className="contact-form">
+        <div>New Contact</div>
         {reduxUtils.map(inputs, this.renderInput)}
         <input type="submit" value="Submit" onClick={this.submitContact} />
       </div>
