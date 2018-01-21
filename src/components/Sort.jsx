@@ -9,8 +9,8 @@ function Sort({ sortBy, updateSort }) {
   }
   return (
     <div>
-      <button value="FIRST" onClick={onPress}>First Name</button>
-      <button value="LAST" onClick={onPress}>Last Name</button>
+      <button className={sortBy === 'FIRST' ? 'selected' : ''} value="FIRST" onClick={onPress}>First Name</button>
+      <button className={sortBy === 'LAST' ? 'selected' : ''} value="LAST" onClick={onPress}>Last Name</button>
     </div>
   );
 }
