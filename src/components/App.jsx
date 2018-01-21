@@ -1,6 +1,5 @@
 import React from 'react';
 import ContactListContainer from './ContactListContainer';
-import Sort from './Sort';
 import NewContactItem from './NewContactItem';
 
 function App() {
@@ -8,7 +7,6 @@ function App() {
     <div>
       <h1>Contacts</h1>
       <NewContactItem />
-      <Sort />
       <ContactListContainer />
     </div>
   );
