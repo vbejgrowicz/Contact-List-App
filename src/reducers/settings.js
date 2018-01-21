@@ -1,5 +1,5 @@
 const initialState = {
-  visible: 'ALL',
+  visible: 'SHOW ALL',
   sortBy: 'LAST',
 };
 
