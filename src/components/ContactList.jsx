@@ -4,25 +4,47 @@ import reduxUtils from '../../libs/Redux-Utility-Functions';
 import ContactItem from './ContactItem';
 import SearchBar from './SearchBar';
 import Sort from './Sort';
+import EditContactModal from './EditContactModal';
 
+class ContactList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addModal: false,
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-function ContactList({ contacts }) {
-  function renderContact(contact) {
+  handleClick() {
+    this.setState({
+      addModal: !this.state.addModal,
+    });
+  }
+
+  render() {
+    function renderContact(contact) {
+      return (
+        <ContactItem key={contact.id} contact={contact} />
+      );
+    }
     return (
-      <ContactItem key={contact.id} contact={contact} />
+      <div className="contact-list">
+        <div className="add-btn" onClick={this.handleClick}>
+          <i className="fa fa-plus-square" aria-hidden="true" /> Add Contact
+        </div>
+        {this.state.addModal && (
+          <EditContactModal onClose={this.handleClick} type="add" />
+        )}
+        <div className="header">
+          <Sort />
+          <SearchBar />
+        </div>
+        <ul>
+          {reduxUtils.map(this.props.contacts, renderContact)}
+        </ul>
+      </div>
     );
   }
-  return (
-    <div className="contact-list">
-      <div className="header">
-        <Sort />
-        <SearchBar />
-      </div>
-      <ul>
-        {reduxUtils.map(contacts, renderContact)}
-      </ul>
-    </div>
-  );
 }
 
 ContactList.propTypes = {

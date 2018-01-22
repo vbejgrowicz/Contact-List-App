@@ -59,6 +59,8 @@ class EditContactModal extends React.Component {
     if (this.props.contact.id) {
       contactData.id = this.props.contact.id;
       this.props.editContact(contactData);
+    } else {
+      this.props.newContact(contactData);
     }
     this.props.onClose();
   }
@@ -105,6 +107,7 @@ class EditContactModal extends React.Component {
 EditContactModal.propTypes = {
   contact: PropTypes.object,
   editContact: PropTypes.func.isRequired,
+  newContact: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
 };
@@ -117,6 +120,9 @@ const mapDispatchToProps = dispatch => (
   {
     editContact: (contact) => {
       dispatch(updateContact(contact));
+    },
+    newContact: (contact) => {
+      dispatch(addContact(contact));
     },
   }
 );
