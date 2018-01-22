@@ -25,9 +25,9 @@ class ContactItem extends React.Component {
     return (
       <li>
         <i className="fa fa-minus-square remove-btn" aria-hidden="true" onClick={() => deleteContact(contact)} />
-        <i className="fa fa-pencil-square edit-btn" aria-hidden="true" onClick={this.handleClick} type="edit" />
+        <i className="fa fa-pencil-square edit-btn" aria-hidden="true" onClick={this.handleClick} />
         {this.state.editModal && (
-          <EditContactModal contact={contact} onClose={this.handleClick} />
+          <EditContactModal contact={contact} onClose={this.handleClick} type="edit" />
         )}
         <div className="name">
           {sortBy === 'LAST' ? (
