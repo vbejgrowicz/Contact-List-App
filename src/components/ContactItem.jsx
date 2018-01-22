@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeContact } from '../actions/contactActions';
+import EditContactModal from './EditContactModal';
 
 class ContactItem extends React.Component {
   constructor(props) {
@@ -25,6 +26,8 @@ class ContactItem extends React.Component {
       <li>
         <i className="fa fa-minus-square remove-btn" aria-hidden="true" onClick={() => deleteContact(contact)} />
         <i className="fa fa-pencil-square edit-btn" aria-hidden="true" onClick={this.handleClick} type="edit" />
+        {this.state.editModal && (
+          <EditContactModal contact={contact} onClose={this.handleClick} />
         )}
         <div className="name">
           {sortBy === 'LAST' ? (
