@@ -10,35 +10,6 @@ h1 {
   text-align: center;
 }
 
-ul {
-  background-color: #B9B9B9;
-  list-style: none;
-  margin: 0 auto;
-  padding: 5px;
-  box-shadow: 0px 0px 6px 2px #6f6f6f;
-  li {
-    background-color: #F9F9F9;
-    margin: 5px;
-    padding: 5px;
-    display: flex;
-    overflow: hidden;
-
-    div {
-      width: 33.33%;
-
-      &.name {
-        font-weight: bold;
-      }
-      &.email {
-        text-align: right;
-      }
-      &.phone {
-        text-align: center;
-      }
-    }
-  }
-}
-
 input {
   margin: 5px;
   font-size: 14px;
@@ -88,6 +59,54 @@ button {
     form {
       width: 50%;
       text-align: right;
+    }
+  }
+  ul {
+    background-color: #B9B9B9;
+    list-style: none;
+    margin: 0 auto;
+    padding: 5px;
+    box-shadow: 0px 0px 6px 2px #6f6f6f;
+    li {
+      background-color: #F9F9F9;
+      margin: 5px;
+      padding: 5px;
+      display: flex;
+      overflow: hidden;
+      min-height: 40px;
+
+      div {
+        width: 33.33%;
+        margin: auto;
+
+        &.name {
+          font-weight: bold;
+        }
+        &.email {
+          text-align: right;
+        }
+        &.phone {
+          text-align: center;
+        }
+      }
+
+      i {
+        display: none;
+        line-height: 40px;
+        margin-left: 10px;
+        cursor: pointer;
+        font-size: 25px;
+      }
+      &:hover {
+        .remove-btn {
+          display: block;
+          color: #CB0000;
+        }
+        .edit-btn {
+          display: block;
+          color: #6F6F6F;
+        }
+      }
     }
   }
 }
