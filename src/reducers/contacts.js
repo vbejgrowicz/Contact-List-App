@@ -11,6 +11,16 @@ function addContactToList(list, contact) {
   return list.concat(contactWithId);
 }
 
+function updateContactInList(list, contact) {
+  const updatedList = reduxUtils.map(list, (el) => {
+    if (el.id === contact.id) {
+      return reduxUtils.merge(el, contact);
+    }
+    return el;
+  });
+  return updatedList;
+}
+
 const contacts = (state = initalState, action) => {
   switch (action.type) {
     case 'ADD_CONTACT':
@@ -22,6 +32,11 @@ const contacts = (state = initalState, action) => {
       return {
         ...state,
         list: reduxUtils.remove(state.list, value => value.id === action.contact.id),
+      };
+    case 'EDIT_CONTACT':
+      return {
+        ...state,
+        list: updateContactInList(state.list, action.contact),
       };
     default:
       return state;
