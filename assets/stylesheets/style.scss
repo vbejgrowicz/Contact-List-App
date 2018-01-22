@@ -4,6 +4,8 @@ body {
   padding: 0;
   border: 0;
   text-align: center;
+  font-family: sans-serif;
+  font-size: 15px;
 }
 
 h1 {
@@ -12,6 +14,7 @@ h1 {
 
 input {
   margin: 5px;
+  min-height: 22px;
   font-size: 14px;
   width: 200px;
 }
@@ -38,7 +41,7 @@ button {
   width: 100% !important;
   .contact-form {
     width: 870px;
-    height: 200px;
+    height: auto;
     margin: auto;
     margin-top: 100px;
     box-shadow: 0px 0px 6px 2px #6f6f6f;
@@ -46,7 +49,7 @@ button {
     flex-wrap: wrap;
     background-color: #F9F9F9;
     justify-content: center;
-    padding: 15px;
+    padding: 30px;
     .title {
       display: block;
       width: 100%;
