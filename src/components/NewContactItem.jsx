@@ -74,11 +74,12 @@ class NewContactItem extends React.Component {
 
   render() {
     const inputs = reduxUtils.keys(this.state);
+    const isDisabled = this.state.first.trim() === '' || this.state.last.trim() === '';
     return (
       <div className="contact-form">
         <div>New Contact</div>
         {reduxUtils.map(inputs, this.renderInput)}
-        <input type="submit" value="Submit" onClick={this.submitContact} />
+        <input type="submit" value="Submit" onClick={this.submitContact} disabled={isDisabled} />
       </div>
     );
   }
@@ -90,9 +91,10 @@ NewContactItem.propTypes = {
 
 const mapDispatchToProps = dispatch => (
   {
-    submitContact: (post, category, user, postCount) => {
-      dispatch(addContact(post, category, user, postCount));
+    submitContact: (contact) => {
+      dispatch(addContact(contact));
     },
   }
 );
+
 export default connect(null, mapDispatchToProps)(NewContactItem);
