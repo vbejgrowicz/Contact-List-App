@@ -18,6 +18,11 @@ const contacts = (state = initalState, action) => {
         ...state,
         list: addContactToList(state.list, action.contact),
       };
+    case 'REMOVE_CONTACT':
+      return {
+        ...state,
+        list: reduxUtils.remove(state.list, value => value.id === action.contact.id),
+      };
     default:
       return state;
   }

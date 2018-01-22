@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeContact } from '../actions/contactActions';
 
-function ContactItem({ contact, sortBy }) {
+function ContactItem({ contact, sortBy, deleteContact }) {
   const { name, phone, email } = contact;
   return (
     <li>
+      <i className="fa fa-minus-square remove-btn" aria-hidden="true" onClick={() => deleteContact(contact)} />
       <div className="name">
         {sortBy === 'LAST' ? (
           `${name.last}, ${name.first}`
@@ -26,10 +28,19 @@ function ContactItem({ contact, sortBy }) {
 ContactItem.propTypes = {
   contact: PropTypes.object.isRequired,
   sortBy: PropTypes.string.isRequired,
+  deleteContact: PropTypes.func.isRequired,
 };
 
 function mapStateToProps({ settings }) {
   return { sortBy: settings.sortBy };
 }
 
-export default connect(mapStateToProps, null)(ContactItem);
+const mapDispatchToProps = dispatch => (
+  {
+    deleteContact: (contact) => {
+      dispatch(removeContact(contact));
+    },
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactItem);
