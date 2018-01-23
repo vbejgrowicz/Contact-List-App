@@ -29,9 +29,9 @@ class ContactList extends React.Component {
     }
     return (
       <div className="contact-list">
-        <div className="add-btn" onClick={this.handleClick}>
+        <button className="add-btn" onClick={this.handleClick}>
           <i className="fa fa-plus-square" aria-hidden="true" /> Add Contact
-        </div>
+        </button>
         {this.state.addModal && (
           <EditContactModal onClose={this.handleClick} type="add" />
         )}
@@ -40,7 +40,11 @@ class ContactList extends React.Component {
           <SearchBar />
         </div>
         <ul>
-          {reduxUtils.map(this.props.contacts, renderContact)}
+          {this.props.contacts.length > 0 ? (
+              reduxUtils.map(this.props.contacts, renderContact)
+          ) : (
+            <div>No Contacts Found</div>
+          )}
         </ul>
       </div>
     );
