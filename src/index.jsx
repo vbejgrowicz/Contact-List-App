@@ -12,9 +12,9 @@ const reduxTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOL
 const store = createStore(contactApp, initContacts, reduxTools);
 
 // FOR DEV ONLY
-store.subscribe(() => {
-  console.log('store updated', store.getState());
-});
+// store.subscribe(() => {
+//   console.log('store updated', store.getState());
+// });
 
 REACTDOM.render(
   <Provider store={store}>
